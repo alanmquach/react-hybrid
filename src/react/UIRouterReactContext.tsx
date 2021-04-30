@@ -66,7 +66,7 @@ export function UIRouterContextComponent(props: {
   return (
     <UIRouterContext.Provider value={(inherited && routerFromReactContext) || contextFromAngularJS.router}>
       <UIViewContext.Provider value={(inherited && parentUIViewFromReactContext) || contextFromAngularJS.addr}>
-        {childrenCount === 1 ? React.Children.only(children) : <div>{children}</div>}
+        {childrenCount === 1 && React.isValidElement(children) ? React.Children.only(children) : <div>{children}</div>}
       </UIViewContext.Provider>
     </UIRouterContext.Provider>
   );
